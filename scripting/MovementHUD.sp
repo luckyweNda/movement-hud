@@ -5,7 +5,7 @@
 // ====================== VARIABLES ========================== //
 
 bool gB_Late = false;
-Preferences g_Prefs = null;
+Preferences gH_Prefs = null;
 
 // ======================= INCLUDES ========================== //
 
@@ -56,7 +56,7 @@ public void OnPluginStart()
 {
 	InitHudText();
 
-	g_Prefs = InitPrefs();
+	gH_Prefs = InitPrefs();
 	Call_OnPreferencesInit();
 	CreatePreferenceCommands();
 
@@ -82,7 +82,7 @@ public void OnClientCookiesCached(int client)
 {
 	if (!IsFakeClient(client))
 	{
-		InitPrefsForClient(client, g_Prefs);
+		InitPrefsForClient(client, gH_Prefs);
 	}
 }
 

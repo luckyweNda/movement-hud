@@ -32,14 +32,14 @@ public int Native_Print(Handle plugin, int numParams)
 public int Native_GetPreference(Handle plugin, int numParams)
 {
 	int iPref = GetNativeCell(1);
-	return g_Prefs.Get(iPref);
+	return gH_Prefs.Get(iPref);
 }
 
 public int Native_GetPreferenceByName(Handle plugin, int numParams)
 {
 	char name[MAX_PREFERENCE_NAME_LENGTH];
 	GetNativeString(1, name, sizeof(name));
-	return view_as<int>(g_Prefs.GetPreferenceByName(name));
+	return view_as<int>(gH_Prefs.GetPreferenceByName(name));
 }
 
 public int Native_Movement_GetGroundTicks(Handle plugin, int numParams)

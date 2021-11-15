@@ -14,7 +14,7 @@ void CreateCommands()
 
 void CreatePreferenceCommands()
 {
-	for (int i = 0; i < g_Prefs.Length; i++)
+	for (int i = 0; i < gH_Prefs.Length; i++)
 	{
 		char name[MAX_PREFERENCE_NAME_LENGTH];
 		Pref(i).GetName(name, sizeof(name));
@@ -153,7 +153,7 @@ public Action Command_Preference(int client, int args)
 	char command[MAX_PREFERENCE_NAME_LENGTH + 4];
 	GetCmdArg(0, command, sizeof(command));
 
-	Preference pref = g_Prefs.GetPreferenceByName(command[3]);
+	Preference pref = gH_Prefs.GetPreferenceByName(command[3]);
 
 	if (args <= 0)
 	{

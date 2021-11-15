@@ -69,7 +69,7 @@ static int Preference_Limits[PREF_COUNT] =
 
 Preference Pref(int pref)
 {
-	return g_Prefs.GetPreference(pref);
+	return gH_Prefs.GetPreference(pref);
 }
 
 Preferences InitPrefs()

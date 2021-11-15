@@ -23,7 +23,7 @@ void DisplayPreferenceToolsMenu(int client)
 	menu.AddItem("G", "Generate preferences code");
 	menu.AddItem("C", "Load preferences from code");
 	menu.AddItem("P", "Load preferences from player");
-	menu.AddItem("R", ResetConfirmationPhrases[ResetConfirmation[client]]);
+	menu.AddItem("R", ResetConfirmationPhrases[view_as<int>(ResetConfirmation[client])]);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);
@@ -90,7 +90,7 @@ public int PreferenceToolsMenu_Handler(Menu menu, MenuAction action, int param1,
 			{
 				if (ResetConfirmation[param1])
 				{
-					g_Prefs.ResetPreferences(param1);
+					gH_Prefs.ResetPreferences(param1);
 					MHud_Print(param1, true, "Your preferences has been reset!");
 				}
 
@@ -125,9 +125,9 @@ public int PlayersMenu_Handler(Menu menu, MenuAction action, int param1, int par
 		
 		if (MHud_IsValidClient(target))
 		{
-			for (int i = 0; i < g_Prefs.Length; i++)
+			for (int i = 0; i < gH_Prefs.Length; i++)
 			{
-				Preference pref = g_Prefs.GetPreference(i);
+				Preference pref = gH_Prefs.GetPreference(i);
 
 				char prefName[MAX_PREFERENCE_NAME_LENGTH];
 				pref.GetName(prefName, sizeof(prefName));

@@ -55,7 +55,7 @@ methodmap PreferencesCode < StringMapEx
 
 void ExportPreferencesToCode(int client, char[] buffer, int maxlength)
 {
-	Preferences prefs = g_Prefs;
+	Preferences prefs = gH_Prefs;
 	JSON_Object prefsJson = new JSON_Object(false);
 
 	prefsJson.SetInt(OWNER_TOKEN, GetSteamAccountID(client));
@@ -85,7 +85,7 @@ void ExportPreferencesToCode(int client, char[] buffer, int maxlength)
 
 PreferencesCode ImportPreferencesFromCode(int client, char[] code)
 {
-	Preferences prefs = g_Prefs;
+	Preferences prefs = gH_Prefs;
 	PreferencesCode prefsObj = new PreferencesCode();
 		
 	char buffer[256];
