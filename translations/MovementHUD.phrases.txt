@@ -41,9 +41,9 @@
 	}
 	"AdvPrefsInputValue"
 	{
-		"#format"   "{1:s}"
-		"en"        "Enter the value for <\x05{1}\x01>"
-		"chi"       "给<\x05{1}\x01>输入数据: "
+		"#format"	"{1:s}"
+		"en"		"Enter the value for <\x05{1}\x01>"
+		"chi"		"给<\x05{1}\x01>输入数据: "
 	}
 	"AdvPrefsInputFormatXY"
 	{
