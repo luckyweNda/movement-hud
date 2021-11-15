@@ -37,7 +37,7 @@
 	"AdvPrefsMenuTitle"
 	{
 		"en"		"Advanced Client Preferences"
-		"chi"       "高级设置"
+		"chi"		"高级设置"
 	}
 	"AdvPrefsInputValue"
 	{
