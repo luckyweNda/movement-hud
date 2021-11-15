@@ -88,13 +88,19 @@ public Action Command_MHud_Preferences_Import(int client, int args)
 		return Plugin_Handled;
 	}
 
+	char sMessage[128];
+
 	if (args < 1)
 	{
 		char cmdName[64];
 		GetCmdArg(0, cmdName, sizeof(cmdName));
 
-		MHud_Print(client, true, "Enter your preferences code in the console");
-		MHud_Print(client, false, "Follow the format of: %s <\x05code\x01>", cmdName);
+		FormatEx(sMessage, 128, "%T", "Import-InputPrefsCode", client);
+		MHud_Print(client, true, sMessage);
+
+		FormatEx(sMessage, 128, "%T", "Import-InputPrefsCodeFormat", client, cmdName);
+		MHud_Print(client, false, sMessage);
+
 		return Plugin_Handled;
 	}
 
@@ -109,15 +115,20 @@ public Action Command_MHud_Preferences_Import(int client, int args)
 		
 		if (code.Revision != MHUD_PREFERENCES_REVISION)
 		{
-			MHud_Print(client, true, "\x07WARNING! Mismatched preference revisions\x01");
+			FormatEx(sMessage, 128, "%T", "Import-PrefsMismatch", client);
+			MHud_Print(client, true, sMessage);
 		}
 
-		MHud_Print(client, true, "Imported preferences from \x05%s\x01", steamId2);
-		MHud_Print(client, true, "Imported preferences using revision number \x05%d\x01", code.Revision);
+		FormatEx(sMessage, 128, "%T", "Import-PrefsFromSteamid", client, steamId2);
+		MHud_Print(client, true, sMessage);
+
+		FormatEx(sMessage, 128, "%T", "Import-PrefsFromRevision", client, code.Revision);
+		MHud_Print(client, true, sMessage);
 	}
 	else
 	{
-		MHud_Print(client, true, "\x07Failure importing preferences from code!\x01");
+		FormatEx(sMessage, 128, "%T", "Import-PrefsFailed", client);
+		MHud_Print(client, true, sMessage);
 	}
 
 	Call_OnPreferencesImported(client, code);
@@ -136,8 +147,12 @@ public Action Command_MHud_Preferences_Export(int client, int args)
 	char code[256];
 	ExportPreferencesToCode(client, code, sizeof(code));
 
-	MHud_Print(client, true, "See your console for your preferences code!");
-	PrintToConsole(client, "\n-- COPY BETWEEN THESE --\n%s\n-- COPY BETWEEN THESE --", code);
+	char sMessage[128];
+	FormatEx(sMessage, 128, "%T", "Export-SeeConsoleCode_Pre", client);
+	MHud_Print(client, true, sMessage);
+
+	FormatEx(sMessage, 128, "%T", "Export-SeeConsoleCode_Post", client, code);
+	PrintToConsole(client, sMessage);
 
 	Call_OnPreferencesExported(client, code);
 	return Plugin_Handled;
@@ -155,6 +170,8 @@ public Action Command_Preference(int client, int args)
 
 	Preference pref = gH_Prefs.GetPreferenceByName(command[3]);
 
+	char sMessage[128];
+
 	if (args <= 0)
 	{
 		char display[MAX_PREFERENCE_DISPLAY_LENGTH];
@@ -163,7 +180,8 @@ public Action Command_Preference(int client, int args)
 		char value[MAX_PREFERENCE_VALUE_LENGTH];
 		pref.GetStringVal(client, value, sizeof(value));
 
-		MHud_Print(client, true, "%s is currently set to \"%s\"", display, value);
+		FormatEx(sMessage, 128, "%T", "Main-SetValue", client, display, value);
+		MHud_Print(client, true, sMessage);
 	}
 	else
 	{
@@ -179,7 +197,9 @@ public Action Command_Preference(int client, int args)
 		pref.GetStringVal(client, value, sizeof(value));
 
 		Call_OnPreferenceSet(client, pref, true);
-		MHud_Print(client, true, "%s set to \"%s\"", display, value);
+
+		FormatEx(sMessage, 128, "%T", "Main-SetValue", client, display, value);
+		MHud_Print(client, true, sMessage);
 	}
 
 	Call_OnPreferenceCommand(client, pref, (args > 0));

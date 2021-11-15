@@ -4,16 +4,21 @@ void DisplayPreferenceMenu(int client)
 {
 	Menu menu = new Menu(PreferenceMenu_Handler);
 
-	menu.SetTitle("%s V%s\nPlugin Author: %s\
-					\nPreferences Revision: %d",
-					MHUD_TAG_RAW,
-				  	MHUD_VERSION,
-					MHUD_AUTHOR,
-					MHUD_PREFERENCES_REVISION);
+	menu.SetTitle("%T", "PrefsMenuTitle", client,
+				MHUD_TAG_RAW,
+				MHUD_VERSION,
+				MHUD_AUTHOR,
+				MHUD_PREFERENCES_REVISION);
 
-	menu.AddItem("S", "Simple preferences");
-	menu.AddItem("A", "Advanced preferences");
-	menu.AddItem("T", "Preferences helpers & tools");
+	char sDisplay[64];
+	FormatEx(sDisplay, 64, "%T", "PrefsMenu-SimplePrefs", client);
+	menu.AddItem("S", sDisplay);
+
+	FormatEx(sDisplay, 64, "%T", "PrefsMenu-AdvPrefs", client);
+	menu.AddItem("A", sDisplay);
+
+	FormatEx(sDisplay, 64, "%T", "PrefsMenu-PrefsHelper", client);
+	menu.AddItem("T", sDisplay);
 
 	menu.ExitButton = true;
 	menu.Display(client, MENU_TIME_FOREVER);

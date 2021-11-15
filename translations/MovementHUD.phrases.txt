@@ -1,0 +1,161 @@
+"Phrases"
+{
+	// ---------- MainMenus ---------- //
+	"PrefsMenuTitle"
+	{
+		"#format"	"{1:s},{2:s},{3:s},{4:d}"
+		"en"		"{1} V{2}\nPlugin Author: {3}\ \nPreferences Revision: {4}"
+		"chi"		"{1} V{2}\n插件作者: {3}\ \n偏好修订: {4}"
+	}
+	"PrefsMenu-SimplePrefs"
+	{
+		"en"		"Simple preferences"
+		"chi"		"普通设置"
+	}
+	"PrefsMenu-AdvPrefs"
+	{
+		"en"		"Advanced preferences"
+		"chi"		"高级设置"
+	}
+	"PrefsMenu-PrefsHelper"
+	{
+		"en"		"Preferences helpers & tools"
+		"chi"		"不懂如何设置? 点这里"
+	}
+	// ---------- SimpleMenus ---------- //
+	"SimplePrefsMenuTitle"
+	{
+		"en"		"Simple Client Preferences"
+		"chi"		"普通设置"
+	}
+	"SimplePrefsMenuItem-Reserved"
+	{
+		"en"		"Reserved for future use"
+		"chi"		"保留以供将来使用"
+	}
+	// ---------- AdvancedMenus ---------- //
+	"AdvPrefsMenuTitle"
+	{
+		"en"		"Advanced Client Preferences"
+		"chi"       "高级设置"
+	}
+	"AdvPrefsInputValue"
+	{
+		"#format"   "{1:s}"
+		"en"        "Enter the value for <\x05{1}\x01>"
+		"chi"       "给<\x05{1}\x01>输入数据: "
+	}
+	"AdvPrefsInputFormatXY"
+	{
+		"en"		"Follow the format of: \x07<X> \x04<Y>\x01 - For example: 0.5 0.8"
+		"chi"		"格式为: \x07<X> \x04<Y>\x01 - 比如, 输入: 0.5 0.8"
+	}
+	"AdvPrefsInputFormatRGB"
+	{
+		"en"		"Follow the format of: \x07<R> \x04<G> \x0B<B>\x01 - For example: 255 0 255"
+		"chi"		"格式为: \x07<R> \x04<G> \x0B<B>\x01 - 比如, 输入: 255 0 255"
+	}
+	"AdvPrefsInputCancel"
+	{
+		"en"		"If you wish to cancel, type \"\x05cancel\x01\" to cancel the input"
+		"chi"		"如果你想取消输入数据的话, 聊天框输入\"\x05cancel\x01\"即可"
+	}
+	"AdvPrefsInputReset"
+	{
+		"en"		"If you wish to reset this preference, type \"\x05reset\x01\" to reset"
+		"chi"		"如果你想重置输入数据的话, 聊天框输入\"\x05reset\x01\"即可"
+	}
+	"AdvPrefsInputCancelDelay"
+	{
+		"#format"	"{1:.2f}"
+		"en"		"This input will cancel itself in \x05{1}\x01 second(s)"
+		"chi"		"这次输入将在\x05{1}\x01秒后取消"
+	}
+	// ---------- ToolsMenus ---------- //
+	"PrefsHelperMenuTitle"
+	{
+		"en"		"Preferences helpers & tools"
+		"chi"		"设置助手菜单"
+	}
+	"PrefsHelperMenuItem-GeneratePrefsCode"
+	{
+		"en"		"Generate preferences code"
+		"chi"		"生成设置代码"
+	}
+	"PrefsHelperMenuItem-LoadPrefsFromCode"
+	{
+		"en"		"Load preferences from code"
+		"chi"		"通过代码配置mhud设置"
+	}
+	"PrefsHelperMenuItem-LoadPrefsFromPlayer"
+	{
+		"en"		"Load preferences from player"
+		"chi"		"通过玩家配置mhud设置"
+	}
+	"PrefsHelper-PlayersMenuTitle"
+	{
+		"en"		"Import preferences from player"
+		"chi"		"从玩家里导入设置"
+	}
+	"PrefsHelper-PlayersMenuItem-NoPlayers"
+	{
+		"en"		"No valid players were found, sorry!"
+		"chi"		"没发现任何玩家..."
+	}
+	"PrefsHelper-SettingsReset"
+	{
+		"en"		"Your preferences has been reset!"
+		"chi"		"你的设置已被重置!"
+	}
+	// ---------- PreferencesCommands ---------- //
+	"Import-InputPrefsCode"
+	{
+		"en"		"Enter your preferences code in the console"
+		"chi"		"在控制台里输入你的设置代码"
+	}
+	"Import-InputPrefsCodeFormat"
+	{
+		"#format"	"{1:s}"
+		"en"		"Follow the format of: {1} <\x05code\x01>"
+		"chi"		"格式为: {1} <\x05代码\x01>"
+	}
+	"Import-PrefsMismatch"
+	{
+		"en"		"\x07WARNING! Mismatched preference revisions\x01"
+		"chi"		"\x07警告! 设置不匹配\x01"
+	}
+	"Import-PrefsFromSteamid"
+	{
+		"#format"	"{1:s}"
+		"en"		"Imported preferences from \x05{1}\x01"
+		"chi"		"从steamid\x05<{1}>\x01里获取到了设置"
+	}
+	"Import-PrefsFromRevision"
+	{
+		"#format"	"{1:d}"
+		"en"		"Imported preferences using revision number \x05{1}\x01"
+		"chi"		"使用修订版号\x05<{1}>\x01导入的设置"
+	}
+	"Import-PrefsFailed"
+	{
+		"en"		"\x07Failure importing preferences from code!\x01"
+		"chi"		"\x07从代码导入设置失败!\x01"
+	}
+	"Export-SeeConsoleCode_Pre"
+	{
+		"en"		"See your console for your preferences code!"
+		"chi"		"在控制台里看你的设置代码!"
+	}
+	"Export-SeeConsoleCode_Post"
+	{
+		"#format"	"{1:s}"
+		"en"		"\n-- COPY BETWEEN THESE --\n{1}\n-- COPY BETWEEN THESE --"
+		"chi"		"\n-- 复制这里 --\n{1}\n-- 复制这里 --"
+	}
+	"Main-SetValue"
+	{
+		"#format"	"{1:s},{2:s}"
+		"en"		"{1} is currently set to \"{2}\""
+		"chi"		"{1} 当前已设置为 \"{2}\""
+	}
+}

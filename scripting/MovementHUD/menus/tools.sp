@@ -18,11 +18,19 @@ void ResetToolsMenuVariables(int client)
 void DisplayPreferenceToolsMenu(int client)
 {
 	Menu menu = new Menu(PreferenceToolsMenu_Handler);
-	menu.SetTitle(MHUD_TAG_RAW ... " Preferences helpers & tools");
+	menu.SetTitle(MHUD_TAG_RAW ... " %T", "PrefsHelperMenuTitle", client);
 
-	menu.AddItem("G", "Generate preferences code");
-	menu.AddItem("C", "Load preferences from code");
-	menu.AddItem("P", "Load preferences from player");
+	char sDisplay[64];
+	FormatEx(sDisplay, 64, "%T", "PrefsHelperMenuItem-GeneratePrefsCode", client);
+	menu.AddItem("G", sDisplay);
+
+	FormatEx(sDisplay, 64, "%T", "PrefsHelperMenuItem-LoadPrefsFromCode", client);
+	menu.AddItem("C", sDisplay);
+
+	FormatEx(sDisplay, 64, "%T", "PrefsHelperMenuItem-LoadPrefsFromPlayer", client);
+	menu.AddItem("P", sDisplay);
+
+	// TODO
 	menu.AddItem("R", ResetConfirmationPhrases[view_as<int>(ResetConfirmation[client])]);
 
 	menu.ExitButton = true;
@@ -32,7 +40,7 @@ void DisplayPreferenceToolsMenu(int client)
 static void DisplayPlayersMenu(int client)
 {
 	Menu menu = new Menu(PlayersMenu_Handler);
-	menu.SetTitle(MHUD_TAG_RAW ... " Import preferences from player");
+	menu.SetTitle(MHUD_TAG_RAW ... " %T", "PrefsHelper-PlayersMenuTitle", client);
 
 	for (int i = 1; i <= MaxClients; i++)
 	{
@@ -61,7 +69,9 @@ static void DisplayPlayersMenu(int client)
 	// If no players were added...
 	if (menu.ItemCount <= 0)
 	{
-		menu.AddItem("", "No valid players were found, sorry!", ITEMDRAW_DISABLED);
+		char sDisplay[64];
+		FormatEx(sDisplay, 64, "%T", "PrefsHelper-PlayersMenuItem-NoPlayers", client);
+		menu.AddItem("", sDisplay, ITEMDRAW_DISABLED);
 	}
 
 	menu.ExitButton = true;
@@ -91,7 +101,10 @@ public int PreferenceToolsMenu_Handler(Menu menu, MenuAction action, int param1,
 				if (ResetConfirmation[param1])
 				{
 					gH_Prefs.ResetPreferences(param1);
-					MHud_Print(param1, true, "Your preferences has been reset!");
+
+					char sMessage[128];
+					FormatEx(sMessage, 128, "%T", "PrefsHelper-SettingsReset", param1);
+					MHud_Print(param1, true, sMessage);
 				}
 
 				ResetConfirmation[param1] = !ResetConfirmation[param1];

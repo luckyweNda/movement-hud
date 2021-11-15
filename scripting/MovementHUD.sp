@@ -54,6 +54,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart()
 {
+	LoadTranslations("MovementHUD.phrases");
 	InitHudText();
 
 	gH_Prefs = InitPrefs();

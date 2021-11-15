@@ -86,19 +86,22 @@ static int GetPresetOrDefault(char[] value, char[][][] values, int maxItems, int
 void DisplaySimplePreferenceMenu(int client, int atItem = 0)
 {
 	Menu menu = new Menu(SimplePreferenceMenu_Handler);
-	menu.SetTitle(MHUD_TAG_RAW ... " Simple Client Preferences");
+	menu.SetTitle(MHUD_TAG_RAW ... " %T", "SimplePrefsMenuTitle", client);
+
+	char sDisplay[64];
+	FormatEx(sDisplay, 64, "%T", "SimplePrefsMenuItem-Reserved", client);
 
 	for (int i = 0; i < PREF_COUNT; i++)
 	{
 		if (i == Pref_Speed_Display + 1)
 		{
-			menu.AddItem("", "Reserved for future use", ITEMDRAW_DISABLED);
-			menu.AddItem("", "Reserved for future use", ITEMDRAW_DISABLED);
+			menu.AddItem("", sDisplay, ITEMDRAW_DISABLED);
+			menu.AddItem("", sDisplay, ITEMDRAW_DISABLED);
 		}
 		
 		if (i == Pref_Keys_Display + 1)
 		{
-			menu.AddItem("", "Reserved for future use", ITEMDRAW_DISABLED);
+			menu.AddItem("", sDisplay, ITEMDRAW_DISABLED);
 		}
 
 		Preference pref = Pref(i);

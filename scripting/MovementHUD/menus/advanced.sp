@@ -15,7 +15,8 @@ static int _AdvancedOptions[] =
 void DisplayAdvancedPreferenceMenu(int client, int atItem = 0)
 {
 	Menu menu = new Menu(AdvancedPreferenceMenu_Handler);
-	menu.SetTitle(MHUD_TAG_RAW ... " Advanced Client Preferences");
+
+	menu.SetTitle(MHUD_TAG_RAW ... " %T", "AdvPrefsMenuTitle", client);
 
 	for (int i = 0; i < sizeof(_AdvancedOptions); i++)
 	{
@@ -54,23 +55,32 @@ public int AdvancedPreferenceMenu_Handler(Menu menu, MenuAction action, int para
 		char display[MAX_PREFERENCE_DISPLAY_LENGTH];
 		pref.GetDisplay(display, sizeof(display));
 
-		MHud_Print(param1, true, "Enter the value for <\x05%s\x01>", display);
+		char sMessage[128];
+		FormatEx(sMessage, 128, "%T", "AdvPrefsInputValue", param1, display);
+		MHud_Print(param1, true, sMessage);
 
 		switch (pref.Type)
 		{
 			case PrefType_XY:
 			{
-				MHud_Print(param1, false, "Follow the format of: \x07<X> \x04<Y>\x01 - For example: 0.5 0.8");
+				FormatEx(sMessage, 128, "%T", "AdvPrefsInputFormatXY", param1);
+				MHud_Print(param1, false, sMessage);
 			}
 			case PrefType_RGBA:
 			{
-				MHud_Print(param1, false, "Follow the format of: \x07<R> \x04<G> \x0B<B>\x01 - For example: 255 0 255");
+				FormatEx(sMessage, 128, "%T", "AdvPrefsInputFormatRGB", param1);
+				MHud_Print(param1, false, sMessage);
 			}
 		}
 
-		MHud_Print(param1, false, "If you wish to cancel, type \"\x05cancel\x01\" to cancel the input");
-		MHud_Print(param1, false, "If you wish to reset this preference, type \"\x05reset\x01\" to reset");
-		MHud_Print(param1, false, "This input will cancel itself in \x05%.2f\x01 second(s)", INPUT_TIMEOUT);
+		FormatEx(sMessage, 128, "%T", "AdvPrefsInputCancel", param1);
+		MHud_Print(param1, false, sMessage);
+
+		FormatEx(sMessage, 128, "%T", "AdvPrefsInputReset", param1);
+		MHud_Print(param1, false, sMessage);
+
+		FormatEx(sMessage, 128, "%T", "AdvPrefsInputCancelDelay", param1, INPUT_TIMEOUT);
+		MHud_Print(param1, false, sMessage);
 
 		Call_OnExpectingInput(param1, pref);
 	}
