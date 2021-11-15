@@ -5,7 +5,7 @@
 	{
 		"#format"	"{1:s},{2:s},{3:s},{4:d}"
 		"en"		"{1} V{2}\nPlugin Author: {3}\ \nPreferences Revision: {4}"
-		"chi"		"{1} V{2}\n插件作者: {3}\ \n偏好修订: {4}"
+		"chi"		"{1} V{2}\n插件作者: {3}"
 	}
 	"PrefsMenu-SimplePrefs"
 	{

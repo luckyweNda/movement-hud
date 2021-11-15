@@ -8,8 +8,8 @@
 // ====================== DEFINITIONS ======================== //
 
 #define MHUD_NAME "MovementHUD"
-#define MHUD_AUTHOR "Sikari"
-#define MHUD_VERSION "2.2.1"
+#define MHUD_AUTHOR "Ciallo, Sikari"
+#define MHUD_VERSION "2.2.2"
 #define MHUD_URL "https://bitbucket.org/Sikarii/MovementHUD"
 
 #define MHUD_PREFERENCES_REVISION 2
